@@ -14,8 +14,9 @@ Summary: A simple tool for deploying applications on Apache YARN
 Current build status
 ====================
 
-All platforms:
-[![noarch](https://img.shields.io/circleci/project/github/conda-forge/skein-feedstock/master.svg?label=noarch)](https://circleci.com/gh/conda-forge/skein-feedstock)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/skein-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/skein-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/skein-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/skein-feedstock)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
