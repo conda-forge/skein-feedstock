@@ -1,5 +1,5 @@
 {% set name = "skein" %}
-{% set version = "0.0.3" %}
+{% set version = "0.0.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/py2.py3/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-py2.py3-none-any.whl
-  sha256: ec52ffb78e72489156221682bd6c7a13133a5e3664bc6b1d1883399190b2fd4d
+  sha256: 79b331a9c79793601459492f708ee7caf858936ff189b5ef0107c3d4f4593311
 
 build:
-  noarch: python
   number: 0
+  skip: True  # [win]
   script: python -m pip install --no-deps --ignore-installed {{ name }}-{{ version }}-py2.py3-none-any.whl
   entry_points:
     - skein = skein.cli:main
@@ -26,6 +26,7 @@ requirements:
     - grpcio >=1.11.0
     - protobuf >=3.5.0
     - pyyaml
+    - backports.weakref  # [py2k]
 
 test:
   imports:
