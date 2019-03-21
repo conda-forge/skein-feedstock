@@ -1,5 +1,5 @@
 {% set name = "skein" %}
-{% set version = "0.5.1" %}
+{% set version = "0.6.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/py2.py3/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-py2.py3-none-any.whl
-  sha256: 80090f1dc04248bfe05ac2d834283770b473b5f19917dd5b28c770e68f27bb10
+  sha256: 3041da1434eb288c96f74d6d92baa3a05d585bad20adc11dd9666dec758117b7
 
 build:
   noarch: python
