@@ -1,7 +1,3 @@
-<!--
-# -*- mode: jinja -*-
--->
-
 About skein
 ===========
 
@@ -18,8 +14,14 @@ Summary: A simple tool and library for deploying applications on Apache YARN
 Current build status
 ====================
 
-All platforms:
-[![noarch](https://img.shields.io/circleci/project/github/conda-forge/skein-feedstock/master.svg?label=noarch)](https://circleci.com/gh/conda-forge/skein-feedstock)
+
+<table><tr>
+    <td>All platforms:</td>
+    <td>
+      <img src="https://img.shields.io/badge/noarch-disabled-lightgrey.svg" alt="noarch disabled">
+    </td>
+  </tr>
+</table>
 
 Current release info
 ====================
