@@ -1,5 +1,5 @@
 {% set name = "skein" %}
-{% set version = "0.7.4" %}
+{% set version = "0.8.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/py2.py3/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-py2.py3-none-any.whl
-  sha256: ddbe793a709abc190971a17ddeb80989a9bb9a652bb51157ed204086cf48cd87
+  sha256: 71da4a16e2bba4d99fa90454b58e951463452596a6e6afaaf024a0d1cce87d3f
 
 build:
-  noarch: python
   number: 0
-  script: python -m pip install --no-deps --ignore-installed {{ name }}-{{ version }}-py2.py3-none-any.whl
+  skip: True  # [win or py<35]
+  script: python -m pip install --no-deps --ignore-installed {{ name }}-{{ version }}-py3-none-any.whl
   entry_points:
     - skein = skein.cli:main
 
