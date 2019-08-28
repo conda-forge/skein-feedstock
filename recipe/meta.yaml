@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://files.pythonhosted.org/packages/py2.py3/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-py2.py3-none-any.whl
+  url: https://files.pythonhosted.org/packages/py3/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-py3-none-any.whl
   sha256: 71da4a16e2bba4d99fa90454b58e951463452596a6e6afaaf024a0d1cce87d3f
 
 build:
