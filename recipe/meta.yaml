@@ -13,7 +13,9 @@ source:
 build:
   number: 0
   skip: True  # [win or py<35]
-  script: python -m pip install --no-deps --ignore-installed {{ name }}-{{ version }}-{{ pkg_loc }}-none-any.whl
+  script:
+    - python -m pip install --no-deps --ignore-installed {{ name }}-{{ version }}-{{ pkg_loc }}-none-any.whl
+    - cp {{ SP_DIR }}/{{ name }}-{{ version }}.dist-info/LICENSE {{ SRC_DIR }}/LICENSE
   entry_points:
     - skein = skein.cli:main
 
@@ -40,6 +42,7 @@ about:
   home: https://jcrist.github.io/skein/
   license: BSD-3-Clause
   license_family: BSD
+  license_file: LICENSE
   summary: A simple tool and library for deploying applications on Apache YARN
   doc_url: https://jcrist.github.io/skein/
   dev_url: https://github.com/jcrist/skein
