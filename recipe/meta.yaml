@@ -12,7 +12,7 @@ source:
 
 build:
   number: 0
-  skip: True  # [win or py<35]
+  noarch: python
   script:
     - python -m pip install --no-deps --ignore-installed {{ name }}-{{ version }}-{{ pkg_loc }}-none-any.whl
     - cp {{ SP_DIR }}/{{ name }}-{{ version }}.dist-info/LICENSE {{ SRC_DIR }}/LICENSE
@@ -21,14 +21,16 @@ build:
 
 requirements:
   host:
-    - python
+    - python >=3.5
     - pip
   run:
-    - python
+    - python >=3.5
     - cryptography
     - grpcio >=1.11.0
     - protobuf >=3.5.0
     - pyyaml
+    # Require the unix virtual package as a runtime dep
+    - __unix
 
 test:
   imports:
