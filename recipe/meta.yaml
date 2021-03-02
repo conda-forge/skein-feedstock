@@ -1,18 +1,19 @@
 {% set name = "skein" %}
 {% set version = "0.8.0" %}
+{% set pkg_loc = "py3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://files.pythonhosted.org/packages/py3/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-py3-none-any.whl
+  url: https://files.pythonhosted.org/packages/{{ pkg_loc }}/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-{{ pkg_loc }}-none-any.whl
   sha256: 71da4a16e2bba4d99fa90454b58e951463452596a6e6afaaf024a0d1cce87d3f
 
 build:
   number: 1
   skip: True  # [win or py<35]
-  script: python -m pip install --no-deps --ignore-installed {{ name }}-{{ version }}-py3-none-any.whl
+  script: python -m pip install --no-deps --ignore-installed {{ name }}-{{ version }}-{{ pkg_loc }}-none-any.whl
   entry_points:
     - skein = skein.cli:main
 
