@@ -27,7 +27,11 @@ requirements:
     - python
     - cryptography
     - grpcio >=1.11.0
-    - protobuf >=3.5.0
+    # FIXME: protobuf is a dependency for skein, and is being held back here for
+    #        now due to a error description reported in
+    #        https://github.com/jcrist/skein/issues/255
+    #
+    - protobuf >=3.5.0,<3.21
     - pyyaml
 
 test:
