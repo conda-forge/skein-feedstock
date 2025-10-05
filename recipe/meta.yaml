@@ -11,7 +11,7 @@ source:
   sha256: 506884a13675ec884b1bbd85675f196fe123e13f33f6b308303531cd26466726
 
 build:
-  number: 4
+  number: 5
   skip: True  # [win or py<35]
   script:
     - python -m pip install --no-deps --ignore-installed {{ name }}-{{ version }}-{{ pkg_loc }}-none-any.whl
