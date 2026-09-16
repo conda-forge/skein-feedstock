@@ -1,20 +1,25 @@
 {% set name = "skein" %}
-{% set version = "0.8.1" %}
-{% set pkg_loc = "py2.py3" %}
+{% set version = "0.8.2" %}
+{% set pkg_loc = "py3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
+  # The wheel is used rather than the sdist because the sdist does not ship the
+  # prebuilt skein.jar; building it from source needs a full Maven/JDK toolchain.
   url: https://files.pythonhosted.org/packages/{{ pkg_loc }}/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}-{{ pkg_loc }}-none-any.whl
-  sha256: 506884a13675ec884b1bbd85675f196fe123e13f33f6b308303531cd26466726
+  sha256: c76287ead9e81bbb2882d8eb26f51ac72d0f08403cabfce77ae23debda0138aa
 
 build:
-  number: 4
-  skip: True  # [win or py<35]
+  number: 0
+  skip: True  # [win]
   script:
     - python -m pip install --no-deps --ignore-installed {{ name }}-{{ version }}-{{ pkg_loc }}-none-any.whl
+    # skein 0.8.2 imports distutils, removed from the stdlib in Python 3.12.
+    # See the script and jcrist/skein#256 for details.
+    - python {{ RECIPE_DIR }}/patch_distutils.py
     - cp {{ SP_DIR }}/{{ name }}-{{ version }}.dist-info/LICENSE {{ SRC_DIR }}/LICENSE
   entry_points:
     - skein = skein.cli:main
@@ -23,10 +28,14 @@ requirements:
   host:
     - python
     - pip
+    - setuptools
   run:
     - python
     - cryptography
-    - grpcio >=1.11.0
+    # 0.8.2 declares `grpcio !=1.45.0,>=1.11.0`; mirrors upstream metadata.
+    - grpcio >=1.11.0,!=1.45.0
+    # Needed by the distutils -> packaging.version change applied in build.
+    - packaging
     - protobuf >=3.5.0
     - pyyaml
 
